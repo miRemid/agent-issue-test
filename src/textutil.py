@@ -3,7 +3,9 @@
 
 def slugify(text):
     """Turn arbitrary text into a URL-safe slug."""
-    return text.lower().replace(" ", "-")
+    # split() drops leading/trailing separators and collapses runs, so joining
+    # yields exactly one hyphen between tokens and none at the edges.
+    return "-".join(text.lower().split())
 
 
 def truncate(text, limit):
