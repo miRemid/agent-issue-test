@@ -2,8 +2,12 @@
 
 
 def slugify(text):
-    """Turn arbitrary text into a URL-safe slug."""
-    return text.lower().replace(" ", "-")
+    """Turn arbitrary text into a URL-safe slug.
+
+    Consecutive whitespace collapses to a single hyphen; leading and
+    trailing whitespace never becomes a hyphen (#20).
+    """
+    return "-".join(text.lower().split())
 
 
 def truncate(text, limit):
